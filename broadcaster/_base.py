@@ -28,7 +28,7 @@ class Broadcast:
     def __init__(self, url: str):
         parsed_url = urlparse(url)
         self._subscribers = {}
-        if parsed_url.scheme == 'redis':
+        if parsed_url.scheme in ('redis', 'rediss'):
             from ._backends.redis import RedisBackend
             self._backend = RedisBackend(url)
 
